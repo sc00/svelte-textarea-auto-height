@@ -1,50 +1,19 @@
-# svelte-input-auto-width
+# svelte-textarea-auto-height
 
 > A svelte action that automatically resizes input fields based on their value.
 
 ### Install
 
 ```bash
-$ npm install svelte-input-auto-width
+$ npm install svelte-textarea-auto-height
 ```
 
 ### Usage
 
 ```js
 <script>
-  import { autoWidth } from 'svelte-input-auto-width';
+  import { autoHeight } from 'svelte-textarea-auto-height';
 </script>
 
-<input
-  use:autoWidth
-  type="text"
-  placeholder="Type and watch me resize!"
-/>
+<textarea use:autoHeight cols="30"></textarea>
 ```
-
-### Options
-
-```js
-<input
-  use:autoWidth={{ maxWidth: "300px", minWidth: "100px" }}
-  type="text"
-  placeholder="Type and watch me resize!"
-/>
-```
-
-Pass in an object to set the following properties:
-
-#### maxWidth
-
-Type: `String`
-Default: `'none'`
-
-Set the input field’s max-width. Pass in a regular css value in string format.
-
-#### minWidth
-
-Type: `String`
-Default: `'1.5ch'`
-
-Set the input field’s min-width. Pass in a regular css value in string format.
-# svelte-textarea-auto-height

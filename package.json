@@ -1,0 +1,21 @@
+{
+  "name": "svelte-textarea-auto-height",
+  "version": "1.0.0",
+  "description": "svelte action to set the height of textareas based on their value",
+  "main": "./index.mjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sc00/svelte-textarea-auto-height.git"
+  },
+  "keywords": [
+    "svelte",
+    "action",
+    "textarea-height"
+  ],
+  "author": "sc00",
+  "license": "GNU GPL V3",
+  "bugs": {
+    "url": "https://github.com/sc00/svelte-textarea-auto-height/issues"
+  },
+  "homepage": "https://github.com/sc00/svelte-textarea-auto-height#readme"
+}

@@ -1,0 +1,80 @@
+export const autoHeight = (node) => {
+  /* Variables */
+  let height;
+
+  /* Constants */
+  const update = new Event("update");
+
+  /* Functions */
+  const init = () => {
+    addStyles();
+    observeElement();
+    addEventListeners();
+    setInitialHeight();
+  };
+
+  const dispatchUpdateEvent = () => {
+    node.dispatchEvent(update);
+  };
+
+  const setInitialHeight = () => {
+    if (node.value) {
+      height = node.scrollHeight;
+    } else {
+      node.value = "|";
+      node.style.height = "0px";
+      height = node.scrollHeight;
+      node.value = "";
+    }
+  };
+
+  const setHeight = () => {
+    node.style.height = "0px";
+    node.style.height = node.scrollHeight + "px";
+  };
+
+  const addStyles = () => {
+    node.style.height = height + "px";
+    node.style.boxSizing = "border-box";
+  };
+
+  const observeElement = () => {
+    let elementPrototype = Object.getPrototypeOf(node);
+    let descriptor = Object.getOwnPropertyDescriptor(elementPrototype, "value");
+    Object.defineProperty(node, "value", {
+      get: function () {
+        return descriptor.get.apply(this, arguments);
+      },
+      set: function () {
+        descriptor.set.apply(this, arguments);
+        dispatchUpdateEvent();
+      },
+    });
+  };
+
+  const addEventListeners = () => {
+    node.addEventListener("input", (e) => {
+      dispatchUpdateEvent();
+    });
+    node.addEventListener("update", setHeight);
+  };
+
+  const removeEventListeners = () => {
+    node.removeEventListener("input", dispatchUpdateEvent);
+    node.removeEventListener("update", setHeight);
+  };
+
+  if (node.tagName.toLowerCase() !== "textarea") {
+    throw new Error(
+      "svelte-textarea-auto-height can only be used on input elements."
+    );
+  } else {
+    init();
+
+    return {
+      destroy() {
+        removeEventListeners();
+      },
+    };
+  }
+};
