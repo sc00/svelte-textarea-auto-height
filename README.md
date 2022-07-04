@@ -15,5 +15,9 @@ $ npm install svelte-textarea-auto-height
   import { autoHeight } from 'svelte-textarea-auto-height';
 </script>
 
-<textarea use:autoHeight cols="30"></textarea>
+<textarea
+  use:autoHeight
+  cols="30"
+  placeholder="Type and watch me resize!"
+></textarea>
 ```

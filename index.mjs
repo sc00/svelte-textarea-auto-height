@@ -21,10 +21,16 @@ export const autoHeight = (node) => {
     if (node.value) {
       height = node.scrollHeight;
     } else {
-      node.value = "|";
-      node.style.height = "0px";
-      height = node.scrollHeight;
-      node.value = "";
+      if (node.placeholder) {
+        node.value = node.placeholder;
+        height = node.scrollHeight;
+        node.value = "";
+      } else {
+        node.value = "|";
+        node.style.height = "0px";
+        height = node.scrollHeight;
+        node.value = "";
+      }
     }
   };
 
