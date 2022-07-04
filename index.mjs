@@ -66,7 +66,7 @@ export const autoHeight = (node) => {
 
   if (node.tagName.toLowerCase() !== "textarea") {
     throw new Error(
-      "svelte-textarea-auto-height can only be used on input elements."
+      "svelte-textarea-auto-height can only be used on textarea elements."
     );
   } else {
     init();
