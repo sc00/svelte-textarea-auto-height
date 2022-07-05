@@ -1,7 +1,4 @@
 export const autoHeight = (node) => {
-  /* Variables */
-  let height;
-
   /* Constants */
   const update = new Event("update");
 
@@ -18,6 +15,8 @@ export const autoHeight = (node) => {
   };
 
   const setInitialHeight = () => {
+    let height;
+
     if (node.value) {
       height = node.scrollHeight;
     } else {
@@ -32,6 +31,8 @@ export const autoHeight = (node) => {
         node.value = "";
       }
     }
+
+    node.style.height = height + "px";
   };
 
   const setHeight = () => {
@@ -40,7 +41,6 @@ export const autoHeight = (node) => {
   };
 
   const addStyles = () => {
-    node.style.height = height + "px";
     node.style.boxSizing = "border-box";
   };
 
